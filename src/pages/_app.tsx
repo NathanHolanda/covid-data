@@ -1,11 +1,7 @@
-// import Layout from "@/components/Layout";
-// import { store } from "@/store";
 import { AppProps } from "next/app";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import "@/app/globals.css";
-// import { Provider } from "react-redux";
-// import { ToastContainer } from "react-toastify";
 import { FaVirusCovid } from "react-icons/fa6";
 import { ToastContainer } from "react-toastify";
 
