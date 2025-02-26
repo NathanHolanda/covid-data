@@ -5,7 +5,7 @@ import InputGroup from "@/components/InputGroup";
 import Select from "@/components/Select";
 import getToast from "@/utils/getToast";
 import { Formik } from "formik";
-import React from "react";
+import React, { useEffect } from "react";
 
 const statesArr = [
   "",
@@ -77,12 +77,6 @@ export default function FormPage() {
             errors.recovered = "Número de casos recuperados inválido";
           if (!values.date || !/\d{4}-\d{2}-\d{2}/.test(values.date))
             errors.date = "Data inválida";
-
-          if (Object.values(errors).length > 0)
-            getToast(
-              "Preencha corretamente todos os campos do formulário!",
-              "error"
-            );
 
           return errors;
         }}
