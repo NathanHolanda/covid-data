@@ -1,3 +1,4 @@
+// componente tabela
 import React from "react";
 
 type Props = {
@@ -14,6 +15,7 @@ export default function Table({ titles, rows }: Props) {
             <th
               key={`title-${i}`}
               className={
+                // a borda à direita não é colocada na última coluna pois já há a borda da tabela
                 (i !== arr.length - 1 ? "border border-right-gray-300" : "") +
                 " px-2 py-1"
               }
@@ -24,18 +26,30 @@ export default function Table({ titles, rows }: Props) {
         </thead>
         <tbody>
           {rows.map((row, i, arr) => (
-            <tr key={`row-${i}`} className="border border-bottom-gray-300">
-              {row.map((col) => (
-                <td
-                  className={
-                    (i !== arr.length - 1
-                      ? "border border-right-gray-300"
-                      : "") + " px-2 py-1"
-                  }
-                >
-                  {col}
-                </td>
-              ))}
+            <tr
+              key={`row-${i}`}
+              className={
+                // cria uma tabela no estilo striped
+                (i % 2 === 0 ? "bg-indigo-100 " : "") +
+                "border border-bottom-gray-300"
+              }
+            >
+              {row.map((col, j) => {
+                console.log(i % 2);
+                return (
+                  <td
+                    key={`col-${i}-${j}`}
+                    className={
+                      // a borda à direita não é colocada na última coluna pois já há a borda da tabela
+                      (j !== arr.length - 1
+                        ? "border border-right-gray-300"
+                        : "") + " px-2 py-1"
+                    }
+                  >
+                    {col}
+                  </td>
+                );
+              })}
             </tr>
           ))}
         </tbody>

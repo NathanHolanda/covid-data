@@ -1,3 +1,4 @@
+// componente de botão customizado
 import React from "react";
 
 type Props = React.ButtonHTMLAttributes<HTMLButtonElement> & {

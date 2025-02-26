@@ -1,3 +1,4 @@
+// componente principal do projeto
 import { AppProps } from "next/app";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -11,6 +12,7 @@ type CustomLinkProps = {
   pathname: string;
 };
 function CustomLink({ href, label, pathname }: CustomLinkProps) {
+  // componente de link customizado
   return (
     <Link
       href={href}
@@ -27,6 +29,7 @@ function CustomLink({ href, label, pathname }: CustomLinkProps) {
 }
 
 export default function App({ Component, pageProps }: AppProps) {
+  // componente principal com o layout padrão do projeto
   const router = useRouter();
 
   return (

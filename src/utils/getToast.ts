@@ -1,5 +1,6 @@
 import { Bounce, toast, TypeOptions } from "react-toastify";
 
+// função para disparar toast
 export default function getToast(message: string, type: TypeOptions) {
   toast(message, {
     position: "top-right",

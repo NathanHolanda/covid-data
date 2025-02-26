@@ -1,3 +1,4 @@
+// componente de card de dados
 import formatNumber from "@/utils/formatNumber";
 import React from "react";
 

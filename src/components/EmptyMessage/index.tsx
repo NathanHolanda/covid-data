@@ -1,3 +1,4 @@
+// componente de mensagem para lista vazia
 import React from "react";
 
 type Props = {

@@ -1,3 +1,4 @@
+// componente da página com dados dos países
 import api from "@/api";
 import DataCard from "@/components/DataCard";
 import Description from "@/components/Description";
@@ -5,6 +6,7 @@ import getToast from "@/utils/getToast";
 import World from "@react-map/world";
 import React, { useState } from "react";
 
+// tipagem dos dados de um país
 type CountryData = {
   cases: any;
   confirmed: number;
@@ -16,6 +18,7 @@ type CountryData = {
 
 type Props = { countriesData: CountryData[] };
 
+// Map dos países com nomes diferentes entre API e mapa interativo
 const diffCountries = new Map([
   ["Republic of Congo", "Congo (Brazzaville)"],
   ["Democratic Republic of Congo", "Congo (Kinshasa)"],
@@ -40,21 +43,27 @@ export default function WorldPage({ countriesData }: Props) {
         subtitle="Clique em um país no mapa para obter dados do mesmo a respeito da COVID."
       />
       <div className="flex">
+        {/* componente de mapa mundi interativo */}
         <World
           onSelect={(country) => {
+            // callback disparada ao selecionar um país
+
             if (country) {
+              // busca no array de países pelo país selecionado ou seu correspondente no Map diffCountries
               const selected = countriesData.find(
                 (item) =>
                   item.country === country ||
                   diffCountries.get(country) === item.country
               ) as CountryData;
 
+              // caso o país selecionado for encontrado no array
               if (selected) {
                 setSelectedCountry(selected);
 
                 return;
               }
 
+              // caso não seja encontrado
               if (!selected)
                 getToast(`Dados não encontrados para ${country}.`, "error");
             }
@@ -82,6 +91,7 @@ export default function WorldPage({ countriesData }: Props) {
 }
 
 export async function getStaticProps() {
+  // carregamento prévio do array com dados dos países
   const res = await api.get("/countries");
 
   return {

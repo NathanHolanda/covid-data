@@ -1,3 +1,4 @@
+// componente de descrição com título e subtítulo
 import React from "react";
 
 type Props = {

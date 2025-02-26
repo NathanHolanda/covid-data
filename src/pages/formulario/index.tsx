@@ -1,3 +1,4 @@
+// componente da página de formulário onde usei o Formik
 import Button from "@/components/Button";
 import Description from "@/components/Description";
 import Input from "@/components/Input";
@@ -5,7 +6,6 @@ import InputGroup from "@/components/InputGroup";
 import Select from "@/components/Select";
 import getToast from "@/utils/getToast";
 import { Formik } from "formik";
-import React, { useEffect } from "react";
 
 const statesArr = [
   "",
@@ -47,6 +47,7 @@ export default function FormPage() {
       />
       <Formik
         initialValues={{
+          // valores iniciais do formulário
           state: "",
           cases: 0,
           confirmed: 0,
@@ -55,6 +56,7 @@ export default function FormPage() {
           date: "",
         }}
         onSubmit={(values, actions) => {
+          // callback de submit
           getToast("Dados enviados com sucesso!", "success");
           getToast("Confira o JSON no console", "info");
 
@@ -63,6 +65,8 @@ export default function FormPage() {
           actions.resetForm();
         }}
         validate={(values) => {
+          // callback de validação do formulário
+          // é disparada no evento de submit do form e nos eventos change e blur dos inputs
           const errors: any = {};
 
           if (!values.state) errors.state = "Selecione um estado";
@@ -78,6 +82,7 @@ export default function FormPage() {
           if (!values.date || !/\d{4}-\d{2}-\d{2}/.test(values.date))
             errors.date = "Data inválida";
 
+          // caso haja erros, o submit não será disparado
           return errors;
         }}
       >
