@@ -35,7 +35,6 @@ export default function Table({ titles, rows }: Props) {
               }
             >
               {row.map((col, j) => {
-                console.log(i % 2);
                 return (
                   <td
                     key={`col-${i}-${j}`}
